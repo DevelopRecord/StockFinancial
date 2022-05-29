@@ -14,6 +14,14 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
+    private lazy var tableView = UITableView().then {
+        $0.backgroundColor = .secondarySystemBackground
+        $0.rowHeight = 88
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(SearchViewCell.self, forCellReuseIdentifier: SearchViewCell.identifier)
+    }
+    
     private lazy var searchController = UISearchController(searchResultsController: nil).then {
         $0.searchResultsUpdater = self
         $0.delegate = self
@@ -38,7 +46,10 @@ class SearchViewController: UIViewController {
     }
     
     func configureConstraints() {
-        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     private func setupNavigationBar() {
@@ -46,8 +57,20 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating, UISearchControllerDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        <#code#>
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.identifier, for: indexPath) as? SearchViewCell ?? SearchViewCell()
+        return cell
     }
 }
+
+extension SearchViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
+

@@ -17,6 +17,9 @@
 		FB01A0B428436C620096FF99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB01A0B328436C620096FF99 /* SnapKit */; };
 		FB01A0B728436C6B0096FF99 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FB01A0B628436C6B0096FF99 /* Then */; };
 		FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0BC28436EED0096FF99 /* SearchViewController.swift */; };
+		FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0BE284371D80096FF99 /* SearchViewCell.swift */; };
+		FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C028437DDC0096FF99 /* APIService.swift */; };
+		FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C228437F7C0096FF99 /* SearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FB01A0A428436BB10096FF99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB01A0A628436BB10096FF99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB01A0BC28436EED0096FF99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FB01A0BE284371D80096FF99 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		FB01A0C028437DDC0096FF99 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FB01A0C228437F7C0096FF99 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +70,9 @@
 		FB01A09728436BAF0096FF99 /* StockFinancial */ = {
 			isa = PBXGroup;
 			children = (
-				FB01A0BB28436EDC0096FF99 /* New Group3 */,
-				FB01A0BA28436EDB0096FF99 /* New Group2 */,
-				FB01A0B928436ED90096FF99 /* New Group1 */,
+				FB01A0BB28436EDC0096FF99 /* Model */,
+				FB01A0BA28436EDB0096FF99 /* Service */,
+				FB01A0B928436ED90096FF99 /* View */,
 				FB01A0B828436ED70096FF99 /* Controller */,
 				FB01A09828436BAF0096FF99 /* AppDelegate.swift */,
 				FB01A09A28436BAF0096FF99 /* SceneDelegate.swift */,
@@ -86,25 +92,28 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		FB01A0B928436ED90096FF99 /* New Group1 */ = {
+		FB01A0B928436ED90096FF99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0BE284371D80096FF99 /* SearchViewCell.swift */,
 			);
-			path = "New Group1";
+			path = View;
 			sourceTree = "<group>";
 		};
-		FB01A0BA28436EDB0096FF99 /* New Group2 */ = {
+		FB01A0BA28436EDB0096FF99 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0C028437DDC0096FF99 /* APIService.swift */,
 			);
-			path = "New Group2";
+			path = Service;
 			sourceTree = "<group>";
 		};
-		FB01A0BB28436EDC0096FF99 /* New Group3 */ = {
+		FB01A0BB28436EDC0096FF99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0C228437F7C0096FF99 /* SearchResults.swift */,
 			);
-			path = "New Group3";
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +199,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */,
+				FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
 				FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */,
+				FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */,
 				FB01A09B28436BAF0096FF99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
