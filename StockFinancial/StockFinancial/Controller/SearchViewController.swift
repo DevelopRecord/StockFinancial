@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 
+import MBProgressHUD
 import SnapKit
 import Then
 
@@ -16,7 +17,7 @@ enum Mode {
     case search
 }
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UIAnimatable {
 
     // MARK: - Properties
 
@@ -48,6 +49,7 @@ class SearchViewController: UIViewController {
         configureUI()
         configureConstraints()
         setupNavigationBar()
+        setupTableView()
         observeForm()
     }
 
@@ -64,14 +66,22 @@ class SearchViewController: UIViewController {
         }
     }
 
+    private func setupTableView() {
+        tableView.tableFooterView = UIView()
+    }
+
     private func setupNavigationBar() {
+        navigationItem.title = "검색"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
     }
 
     private func observeForm() {
         $searchQuery.debounce(for: .milliseconds(250), scheduler: RunLoop.main)
             .sink { [unowned self] searchQuery in
+                showLoadingAnimation()
             APIService.shared.fetchSymbolsPublisher(keywords: searchQuery).sink { completion in
+                hideLoadingAnimation()
                 switch completion {
                 case .failure(let error):
                     print("데이터 가져오는 중 에러 발생 | \(error)")
@@ -82,6 +92,15 @@ class SearchViewController: UIViewController {
                 self.searchResults = searchResults
                 self.tableView.reloadData()
             }.store(in: &self.subscribers) // subscriber 실행
+        }.store(in: &subscribers)
+
+        $mode.sink { [unowned self] mode in
+            switch mode {
+            case .onboarding:
+                self.tableView.backgroundView = SearchPlaceholderView()
+            case .search:
+                self.tableView.backgroundView = nil
+            }
         }.store(in: &subscribers)
 
     }
@@ -101,12 +120,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = CalculatorViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 extension SearchViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchQuery = searchController.searchBar.text, !searchQuery.isEmpty else { return }
         self.searchQuery = searchQuery
+    }
+
+    func willPresentSearchController(_ searchController: UISearchController) {
+        mode = .search
     }
 }
 

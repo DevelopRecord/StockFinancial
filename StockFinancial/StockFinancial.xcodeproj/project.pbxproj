@@ -20,6 +20,10 @@
 		FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0BE284371D80096FF99 /* SearchViewCell.swift */; };
 		FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C028437DDC0096FF99 /* APIService.swift */; };
 		FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C228437F7C0096FF99 /* SearchResults.swift */; };
+		FB01A0C52844B03F0096FF99 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */; };
+		FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */; };
+		FB01A0CA2844BEC70096FF99 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */; };
+		FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		FB01A0BE284371D80096FF99 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		FB01A0C028437DDC0096FF99 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FB01A0C228437F7C0096FF99 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
+		FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
+		FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 		FB01A09728436BAF0096FF99 /* StockFinancial */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0C62844B7B50096FF99 /* Protocol */,
 				FB01A0BB28436EDC0096FF99 /* Model */,
 				FB01A0BA28436EDB0096FF99 /* Service */,
 				FB01A0B928436ED90096FF99 /* View */,
@@ -88,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				FB01A0BC28436EED0096FF99 /* SearchViewController.swift */,
+				FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				FB01A0BE284371D80096FF99 /* SearchViewCell.swift */,
+				FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */,
+				FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -114,6 +126,14 @@
 				FB01A0C228437F7C0096FF99 /* SearchResults.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FB01A0C62844B7B50096FF99 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,11 +220,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */,
+				FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */,
 				FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
 				FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */,
 				FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */,
+				FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */,
 				FB01A09B28436BAF0096FF99 /* SceneDelegate.swift in Sources */,
+				FB01A0CA2844BEC70096FF99 /* CalculatorViewController.swift in Sources */,
+				FB01A0C52844B03F0096FF99 /* SearchPlaceholderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
