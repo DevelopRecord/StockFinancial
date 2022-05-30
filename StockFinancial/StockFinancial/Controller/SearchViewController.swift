@@ -6,22 +6,33 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import Then
 
+enum Mode {
+    case onboarding
+    case search
+}
+
 class SearchViewController: UIViewController {
-    
+
     // MARK: - Properties
-    
+
+    private var subscribers = Set<AnyCancellable>()
+    private var searchResults: SearchResponse?
+    @Published private var searchQuery = String() // @Published는 쿼리 변수가 변경될 때마다 관찰할 수 있다는 의미
+    @Published private var mode: Mode = .onboarding
+
     private lazy var tableView = UITableView().then {
-        $0.backgroundColor = .secondarySystemBackground
+        $0.backgroundColor = .clear
         $0.rowHeight = 88
         $0.delegate = self
         $0.dataSource = self
         $0.register(SearchViewCell.self, forCellReuseIdentifier: SearchViewCell.identifier)
     }
-    
+
     private lazy var searchController = UISearchController(searchResultsController: nil).then {
         $0.searchResultsUpdater = self
         $0.delegate = self
@@ -29,48 +40,73 @@ class SearchViewController: UIViewController {
         $0.searchBar.placeholder = "회사명이나 심볼 등을 검색해 보세요."
         $0.searchBar.autocapitalizationType = .allCharacters
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setupNavigationBar()
-    }
-    
-    // MARK: - Helpers
-    
-    func configureUI() {
-        view.backgroundColor = .systemRed
         configureConstraints()
+        setupNavigationBar()
+        observeForm()
     }
-    
+
+    // MARK: - Helpers
+
+    func configureUI() {
+        view.backgroundColor = .secondarySystemBackground
+    }
+
     func configureConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
+
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
+    }
+
+    private func observeForm() {
+        $searchQuery.debounce(for: .milliseconds(250), scheduler: RunLoop.main)
+            .sink { [unowned self] searchQuery in
+            APIService.shared.fetchSymbolsPublisher(keywords: searchQuery).sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("데이터 가져오는 중 에러 발생 | \(error)")
+                case .finished: break
+                }
+            } receiveValue: { searchResults in
+                print("결과: \(searchResults), 개수: \(searchResults.items.count)")
+                self.searchResults = searchResults
+                self.tableView.reloadData()
+            }.store(in: &self.subscribers) // subscriber 실행
+        }.store(in: &subscribers)
+
     }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return searchResults?.items.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.identifier, for: indexPath) as? SearchViewCell ?? SearchViewCell()
+        if let searchResults = self.searchResults {
+            let searchResult = searchResults.items[indexPath.row]
+            cell.configure(with: searchResult)
+        }
+
         return cell
     }
 }
 
 extension SearchViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let searchQuery = searchController.searchBar.text, !searchQuery.isEmpty else { return }
+        self.searchQuery = searchQuery
     }
 }
 

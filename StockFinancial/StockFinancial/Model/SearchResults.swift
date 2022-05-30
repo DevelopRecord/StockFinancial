@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct SearchResults: Decodable {
-    let items: [SearchResult]
+struct SearchResponse: Decodable {
+    var items: [SearchResult]
 
     enum CodingKeys: String, CodingKey {
         case items = "bestMatches"
@@ -16,10 +16,10 @@ struct SearchResults: Decodable {
 }
 
 struct SearchResult: Decodable {
-    let symbol: String
-    let name: String
-    let type: String
-    let currency: String
+    var symbol: String
+    var name: String
+    var type: String
+    var currency: String
 
     enum CodingKeys: String, CodingKey {
         case symbol = "1. symbol"

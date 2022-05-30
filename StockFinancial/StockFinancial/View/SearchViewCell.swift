@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SearchViewCell: UITableViewCell {
 
@@ -45,7 +46,10 @@ class SearchViewCell: UITableViewCell {
 
     private let assetNameLabel = UILabel().then {
         $0.text = "The Boeing Company"
+        $0.numberOfLines = 4
+        $0.textAlignment = .right
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        
     }
 
     // MARK: - Lifecycle
@@ -53,7 +57,7 @@ class SearchViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
-
+        configureConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -64,32 +68,21 @@ class SearchViewCell: UITableViewCell {
 
     private func configureUI() {
         contentView.backgroundColor = .secondarySystemBackground
-        configureConstraints()
     }
 
     private func configureConstraints() {
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-8)
         }
-
-        stackView.addSubview(leftVerticalStackView)
-        leftVerticalStackView.snp.makeConstraints { make in
-            make.width.equalTo(160)
-            make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(-4)
-        }
-
-        stackView.addSubview(rightVerticalStackView)
-        rightVerticalStackView.snp.makeConstraints { make in
-            make.width.equalTo(160)
-            make.top.equalToSuperview().offset(4)
-            make.trailing.equalToSuperview().offset(-8)
-            make.bottom.equalToSuperview().offset(-4)
-        }
+    }
+    
+    func configure(with searchResult: SearchResult) {
+        assetNameLabel.text = searchResult.name
+        assetSymbolLabel.text = searchResult.symbol
+        assetTypeLabel.text = searchResult.type.appending(" ").appending(searchResult.currency)
     }
 }
