@@ -48,9 +48,13 @@ class SearchViewController: UIViewController, UIAnimatable {
         super.viewDidLoad()
         configureUI()
         configureConstraints()
-        setupNavigationBar()
         setupTableView()
         observeForm()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar(title: "검색", largeTitles: true, searchController: searchController)
     }
 
     // MARK: - Helpers
@@ -70,16 +74,10 @@ class SearchViewController: UIViewController, UIAnimatable {
         tableView.tableFooterView = UIView()
     }
 
-    private func setupNavigationBar() {
-        navigationItem.title = "검색"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.searchController = searchController
-    }
-
     private func observeForm() {
         $searchQuery.debounce(for: .milliseconds(250), scheduler: RunLoop.main)
             .sink { [unowned self] searchQuery in
-                showLoadingAnimation()
+            showLoadingAnimation()
             APIService.shared.fetchSymbolsPublisher(keywords: searchQuery).sink { completion in
                 hideLoadingAnimation()
                 switch completion {
@@ -120,7 +118,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = CalculatorViewController()
         navigationController?.pushViewController(controller, animated: true)

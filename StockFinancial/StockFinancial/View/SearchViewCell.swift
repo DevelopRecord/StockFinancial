@@ -48,7 +48,7 @@ class SearchViewCell: UITableViewCell {
         $0.numberOfLines = 4
         $0.textAlignment = .right
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        
+
     }
 
     // MARK: - Lifecycle
@@ -78,7 +78,7 @@ class SearchViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-8)
         }
     }
-    
+
     func configure(with searchResult: SearchResult) {
         assetNameLabel.text = searchResult.name
         assetSymbolLabel.text = searchResult.symbol

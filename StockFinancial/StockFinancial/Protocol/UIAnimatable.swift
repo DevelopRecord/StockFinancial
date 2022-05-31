@@ -19,7 +19,7 @@ extension UIAnimatable {
             MBProgressHUD.showAdded(to: self.view, animated: true)
         }
     }
-    
+
     func hideLoadingAnimation() {
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
