@@ -10,7 +10,7 @@ import UIKit
 class CalculatorViewController: UIViewController {
 
     // MARK: - Properties
-    
+
     var asset: Asset
 
     private lazy var tableView = UITableView().then {
@@ -34,17 +34,17 @@ class CalculatorViewController: UIViewController {
         super.viewWillAppear(animated)
         setupNavigationBar(title: "", largeTitles: false)
     }
-    
+
     init(asset: Asset) {
         self.asset = asset
         print("에셋 정보: \(asset)")
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Helpers
 
     private func configureUI() {
@@ -71,6 +71,8 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.row == 1 {
             let secondCell = tableView.dequeueReusableCell(withIdentifier: CalcaulatorViewSecondCell.identifier, for: indexPath) as? CalcaulatorViewSecondCell ?? CalcaulatorViewSecondCell()
+            secondCell.configure(currency: asset.searchResult.currency)
+            secondCell.delegate = self
             return secondCell
         } else {
             return UITableViewCell()
@@ -85,5 +87,13 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return 150
         }
+    }
+}
+
+extension CalculatorViewController: CalcaulatorViewSecondCellDelegate {
+    func pushViewController() {
+        let controller = DateSelectionController(asset: asset, timeSeriesMonthlyAdjusted: asset.timeSeriesMonthlyAdjusted)
+        print("111111. \(asset.timeSeriesMonthlyAdjusted)")
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

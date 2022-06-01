@@ -59,7 +59,7 @@ class SearchViewController: UIViewController, UIAnimatable {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .secondarySystemBackground
     }
 
@@ -124,22 +124,25 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if let searchResults = self.searchResults {
             let searchResult = searchResults.items[indexPath.item]
             let symbol = searchResult.symbol
-            handleSelect(for: symbol, searchResult: searchResult)
+            handleSelection(for: symbol, searchResult: searchResult)
         }
     }
-    
-    private func handleSelect(for symbol: String, searchResult: SearchResult) {
-        APIService.shared.fetchTimeSeriesMonthlyAdjusted(keywords: symbol).sink { completionResult in
+
+    private func handleSelection(for symbol: String, searchResult: SearchResult) {
+        showLoadingAnimation()
+        APIService.shared.fetchTimeSeriesMonthlyAdjusted(keywords: symbol).sink { [weak self] completionResult in
+            self?.hideLoadingAnimation()
             switch completionResult {
             case .failure(let error):
                 print("ERROR: \(error)")
             case .finished: break
             }
         } receiveValue: { [weak self] timeSeriesMonthlyAdjusted in
+            self?.hideLoadingAnimation()
             let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
             let controller = CalculatorViewController(asset: asset)
             self?.navigationController?.pushViewController(controller, animated: true)
-            
+
             print("DEBUG: \(timeSeriesMonthlyAdjusted.getMonthInfos())")
         }.store(in: &subscribers)
     }

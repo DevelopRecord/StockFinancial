@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol CalcaulatorViewSecondCellDelegate: AnyObject {
+    func pushViewController()
+}
+
 class CalcaulatorViewSecondCell: UITableViewCell {
 
     // MARK: - Properties
 
     static let identifier = "CalcaulatorViewSecondCell"
+    
+    weak var delegate: CalcaulatorViewSecondCellDelegate?
 
     private lazy var stackView = UIStackView(arrangedSubviews: [verticalStackView, verticalStackView2, verticalStackView3]).then {
         $0.backgroundColor = .clear
@@ -29,6 +35,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     private let investmentAmountLTextField = UITextField().then {
         $0.placeholder = "투자량을 입력해 주세요."
         $0.font = UIFont(name: "AvenirNext-Medium", size: 18)
+        $0.keyboardType = .numberPad
         $0.borderStyle = .none
         $0.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
@@ -47,7 +54,6 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     private let unitKindLabel = UILabel().then {
-        $0.text = "(USD)"
         $0.font = UIFont(name: "AvenirNext-Regular", size: 12)
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -62,6 +68,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     private let monthlyDollarCostLTextField = UITextField().then {
         $0.placeholder = "월 달러 평균 금액을 입력해 주세요."
         $0.font = UIFont(name: "AvenirNext-Medium", size: 18)
+        $0.keyboardType = .numberPad
         $0.borderStyle = .none
         $0.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
@@ -80,7 +87,6 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     private let unitKindLabel2 = UILabel().then {
-        $0.text = "(USD)"
         $0.font = UIFont(name: "AvenirNext-Regular", size: 12)
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -99,7 +105,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         $0.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
 
-    private lazy var horizontalStackView3 = UIStackView(arrangedSubviews: [initialDateOfInvestmentLabel, unitKindLabel3]).then {
+    private lazy var horizontalStackView3 = UIStackView(arrangedSubviews: [initialDateOfInvestmentLabel]).then {
         $0.backgroundColor = .clear
         $0.axis = .horizontal
         $0.spacing = 4
@@ -113,7 +119,6 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     private let unitKindLabel3 = UILabel().then {
-        $0.text = "(USD)"
         $0.font = UIFont(name: "AvenirNext-Regular", size: 12)
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -128,6 +133,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
         configureConstraints()
+        setupTextFields()
     }
 
     required init?(coder: NSCoder) {
@@ -148,5 +154,27 @@ class CalcaulatorViewSecondCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-8)
         }
+    }
+
+    func configure(currency: String) {
+        let unitKindArr = [unitKindLabel, unitKindLabel2]
+        unitKindArr.forEach { labels in
+            labels.text = currency.addBrackets()
+        }
+    }
+
+    private func setupTextFields() {
+        investmentAmountLTextField.addDoneButton()
+        monthlyDollarCostLTextField.addDoneButton()
+        initialDateOfInvestmentTextField.delegate = self
+    }
+}
+
+extension CalcaulatorViewSecondCell: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == initialDateOfInvestmentTextField {
+            delegate?.pushViewController()
+        }
+        return false
     }
 }

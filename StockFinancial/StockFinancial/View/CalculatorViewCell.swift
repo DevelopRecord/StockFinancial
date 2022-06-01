@@ -12,7 +12,6 @@ class CalculatorViewCell: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "CalculatorViewCell"
-//    var currencyLabels = [unitKindLabel, unitKindLabel2]
 
     // 전체 스택뷰
     private lazy var stackView = UIStackView(arrangedSubviews: [horizontalStackView1, horizontalStackView2, investmentAmountLabel, horizontalStackView3, horizontalStackView4, horizontalStackView5]).then {
@@ -59,7 +58,6 @@ class CalculatorViewCell: UITableViewCell {
     }
 
     private let unitKindLabel = UILabel().then {
-//        $0.text = "(USD)"
         $0.font = UIFont(name: "AvenirNext-Medium", size: 12)
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -95,13 +93,12 @@ class CalculatorViewCell: UITableViewCell {
     }
 
     private let unitKindLabel2 = UILabel().then {
-//        $0.text = "USD"
-        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 10)
     }
 
     private let costLabel = UILabel().then {
         $0.text = "100"
-        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 10)
     }
 
     // 세 번째 스택뷰 끝
@@ -131,13 +128,13 @@ class CalculatorViewCell: UITableViewCell {
 
     private let amountOfEarnings = UILabel().then {
         $0.text = "+100.25"
-        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 10)
     }
 
     private let currentEarningsRateLabel = UILabel().then {
         $0.text = "(+10.25%)"
         $0.textColor = .systemGreen
-        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 10)
     }
     // 네 번째 스택뷰 끝
 
@@ -157,7 +154,7 @@ class CalculatorViewCell: UITableViewCell {
 
     private let investmentLabel2 = UILabel().then {
         $0.text = "연간 이익"
-        $0.font = UIFont(name: "AvenirNext-Regular", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Regular", size: 10)
     }
 
     private let centerView2 = UIView().then {
@@ -167,7 +164,7 @@ class CalculatorViewCell: UITableViewCell {
     private let earningsRateLabel = UILabel().then {
         $0.text = "10.5%"
         $0.textColor = .systemGreen
-        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
+        $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 10)
     }
 
     // 다섯번째 스택 뷰 끝
@@ -199,11 +196,12 @@ class CalculatorViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-8)
         }
     }
-    
+
     func configure(symbol: String, type: String, currency: String) {
         assetSymbolLabel.text = symbol
         assetTypeLabel.text = type
+
         unitKindLabel.text = currency.addBrackets()
-        unitKindLabel2.text = currency.addBrackets()
+        unitKindLabel2.text = currency
     }
 }
