@@ -26,6 +26,7 @@
 		FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */; };
 		FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */; };
 		FB01A0D2284628200096FF99 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D1284628200096FF99 /* UIViewController.swift */; };
+		FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
 		FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcaulatorViewSecondCell.swift; sourceTree = "<group>"; };
 		FB01A0D1284628200096FF99 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				FB01A0C228437F7C0096FF99 /* SearchResults.swift */,
+				FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */,
 				FB01A0D2284628200096FF99 /* UIViewController.swift in Sources */,
 				FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */,
+				FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 				FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
 				FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */,

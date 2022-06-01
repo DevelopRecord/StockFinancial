@@ -77,6 +77,7 @@ class SearchViewController: UIViewController, UIAnimatable {
     private func observeForm() {
         $searchQuery.debounce(for: .milliseconds(250), scheduler: RunLoop.main)
             .sink { [unowned self] searchQuery in
+            guard !searchQuery.isEmpty else { return } // == if searchQuery.isEmpty { return }
             showLoadingAnimation()
             APIService.shared.fetchSymbolsPublisher(keywords: searchQuery).sink { completion in
                 hideLoadingAnimation()

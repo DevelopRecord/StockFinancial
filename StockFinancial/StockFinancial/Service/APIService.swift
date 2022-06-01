@@ -8,6 +8,11 @@
 import Foundation
 import Combine
 
+enum APIServiceError: Error {
+    case encoding
+    case badRequest
+}
+
 struct APIService {
 
     static let shared = APIService()
@@ -19,8 +24,10 @@ struct APIService {
     let keys = ["3IHWFQO1ST7JOEEW", "OK2BD1ZHZHM2SBFN", "ZK3BSPGTFIVWOMCL"]
 
     func fetchSymbolsPublisher(keywords: String) -> AnyPublisher<SearchResponse, Error> {
+        guard let keywords = keywords.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return Fail(error: APIServiceError.encoding).eraseToAnyPublisher() }
+        
         let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(API_KEY)"
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else { return Fail(error: APIServiceError.badRequest).eraseToAnyPublisher() }
 
         return URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
