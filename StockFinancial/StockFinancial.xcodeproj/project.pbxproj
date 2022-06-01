@@ -25,8 +25,10 @@
 		FB01A0CA2844BEC70096FF99 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */; };
 		FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */; };
 		FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */; };
-		FB01A0D2284628200096FF99 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D1284628200096FF99 /* UIViewController.swift */; };
+		FB01A0D2284628200096FF99 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D1284628200096FF99 /* UIViewController+.swift */; };
 		FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */; };
+		FB01A0D6284762B40096FF99 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D5284762B40096FF99 /* Asset.swift */; };
+		FB01A0D828476AF60096FF99 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D728476AF60096FF99 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +48,10 @@
 		FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
 		FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcaulatorViewSecondCell.swift; sourceTree = "<group>"; };
-		FB01A0D1284628200096FF99 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FB01A0D1284628200096FF99 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
+		FB01A0D5284762B40096FF99 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		FB01A0D728476AF60096FF99 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 			children = (
 				FB01A0C228437F7C0096FF99 /* SearchResults.swift */,
 				FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */,
+				FB01A0D5284762B40096FF99 /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +161,8 @@
 		FB01A0D0284628180096FF99 /* Extension+ */ = {
 			isa = PBXGroup;
 			children = (
-				FB01A0D1284628200096FF99 /* UIViewController.swift */,
+				FB01A0D1284628200096FF99 /* UIViewController+.swift */,
+				FB01A0D728476AF60096FF99 /* String+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -246,12 +252,14 @@
 			files = (
 				FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */,
 				FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */,
-				FB01A0D2284628200096FF99 /* UIViewController.swift in Sources */,
+				FB01A0D2284628200096FF99 /* UIViewController+.swift in Sources */,
 				FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */,
 				FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 				FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
+				FB01A0D828476AF60096FF99 /* String+.swift in Sources */,
 				FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */,
+				FB01A0D6284762B40096FF99 /* Asset.swift in Sources */,
 				FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */,
 				FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */,
 				FB01A09B28436BAF0096FF99 /* SceneDelegate.swift in Sources */,

@@ -121,8 +121,27 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = CalculatorViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        if let searchResults = self.searchResults {
+            let searchResult = searchResults.items[indexPath.item]
+            let symbol = searchResult.symbol
+            handleSelect(for: symbol, searchResult: searchResult)
+        }
+    }
+    
+    private func handleSelect(for symbol: String, searchResult: SearchResult) {
+        APIService.shared.fetchTimeSeriesMonthlyAdjusted(keywords: symbol).sink { completionResult in
+            switch completionResult {
+            case .failure(let error):
+                print("ERROR: \(error)")
+            case .finished: break
+            }
+        } receiveValue: { [weak self] timeSeriesMonthlyAdjusted in
+            let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
+            let controller = CalculatorViewController(asset: asset)
+            self?.navigationController?.pushViewController(controller, animated: true)
+            
+            print("DEBUG: \(timeSeriesMonthlyAdjusted.getMonthInfos())")
+        }.store(in: &subscribers)
     }
 }
 

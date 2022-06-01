@@ -12,6 +12,7 @@ class CalculatorViewCell: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "CalculatorViewCell"
+//    var currencyLabels = [unitKindLabel, unitKindLabel2]
 
     // 전체 스택뷰
     private lazy var stackView = UIStackView(arrangedSubviews: [horizontalStackView1, horizontalStackView2, investmentAmountLabel, horizontalStackView3, horizontalStackView4, horizontalStackView5]).then {
@@ -58,7 +59,7 @@ class CalculatorViewCell: UITableViewCell {
     }
 
     private let unitKindLabel = UILabel().then {
-        $0.text = "(USD)"
+//        $0.text = "(USD)"
         $0.font = UIFont(name: "AvenirNext-Medium", size: 12)
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -94,7 +95,7 @@ class CalculatorViewCell: UITableViewCell {
     }
 
     private let unitKindLabel2 = UILabel().then {
-        $0.text = "USD"
+//        $0.text = "USD"
         $0.font = UIFont(name: "AvenirNext-Demi-Bold", size: 11)
     }
 
@@ -197,5 +198,12 @@ class CalculatorViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-8)
         }
+    }
+    
+    func configure(symbol: String, type: String, currency: String) {
+        assetSymbolLabel.text = symbol
+        assetTypeLabel.text = type
+        unitKindLabel.text = currency.addBrackets()
+        unitKindLabel2.text = currency.addBrackets()
     }
 }

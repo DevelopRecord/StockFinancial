@@ -10,6 +10,8 @@ import UIKit
 class CalculatorViewController: UIViewController {
 
     // MARK: - Properties
+    
+    var asset: Asset
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -32,7 +34,17 @@ class CalculatorViewController: UIViewController {
         super.viewWillAppear(animated)
         setupNavigationBar(title: "", largeTitles: false)
     }
-
+    
+    init(asset: Asset) {
+        self.asset = asset
+        print("에셋 정보: \(asset)")
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Helpers
 
     private func configureUI() {
@@ -55,6 +67,7 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorViewCell.identifier, for: indexPath) as? CalculatorViewCell ?? CalculatorViewCell()
+            cell.configure(symbol: asset.searchResult.symbol, type: asset.searchResult.type, currency: asset.searchResult.currency)
             return cell
         } else if indexPath.row == 1 {
             let secondCell = tableView.dequeueReusableCell(withIdentifier: CalcaulatorViewSecondCell.identifier, for: indexPath) as? CalcaulatorViewSecondCell ?? CalcaulatorViewSecondCell()
