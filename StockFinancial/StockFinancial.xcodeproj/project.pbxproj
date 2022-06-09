@@ -17,6 +17,22 @@
 		FB01A0B428436C620096FF99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB01A0B328436C620096FF99 /* SnapKit */; };
 		FB01A0B728436C6B0096FF99 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FB01A0B628436C6B0096FF99 /* Then */; };
 		FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0BC28436EED0096FF99 /* SearchViewController.swift */; };
+		FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0BE284371D80096FF99 /* SearchViewCell.swift */; };
+		FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C028437DDC0096FF99 /* APIService.swift */; };
+		FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C228437F7C0096FF99 /* SearchResults.swift */; };
+		FB01A0C52844B03F0096FF99 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */; };
+		FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */; };
+		FB01A0CA2844BEC70096FF99 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */; };
+		FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */; };
+		FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */; };
+		FB01A0D2284628200096FF99 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D1284628200096FF99 /* UIViewController+.swift */; };
+		FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */; };
+		FB01A0D6284762B40096FF99 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D5284762B40096FF99 /* Asset.swift */; };
+		FB01A0D828476AF60096FF99 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D728476AF60096FF99 /* String+.swift */; };
+		FB764588284785640012B1EE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB764587284785640012B1EE /* UITextField+.swift */; };
+		FB76458A284788330012B1EE /* DateSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB764589284788330012B1EE /* DateSelectionController.swift */; };
+		FB76458C284788B40012B1EE /* DateSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76458B284788B40012B1EE /* DateSelectionCell.swift */; };
+		FB82D2112851CE4C00B74DCD /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82D2102851CE4C00B74DCD /* Date+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +44,22 @@
 		FB01A0A428436BB10096FF99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB01A0A628436BB10096FF99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB01A0BC28436EED0096FF99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FB01A0BE284371D80096FF99 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		FB01A0C028437DDC0096FF99 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FB01A0C228437F7C0096FF99 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
+		FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
+		FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
+		FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcaulatorViewSecondCell.swift; sourceTree = "<group>"; };
+		FB01A0D1284628200096FF99 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
+		FB01A0D5284762B40096FF99 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		FB01A0D728476AF60096FF99 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		FB764587284785640012B1EE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		FB764589284788330012B1EE /* DateSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionController.swift; sourceTree = "<group>"; };
+		FB76458B284788B40012B1EE /* DateSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionCell.swift; sourceTree = "<group>"; };
+		FB82D2102851CE4C00B74DCD /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +96,11 @@
 		FB01A09728436BAF0096FF99 /* StockFinancial */ = {
 			isa = PBXGroup;
 			children = (
-				FB01A0BB28436EDC0096FF99 /* New Group3 */,
-				FB01A0BA28436EDB0096FF99 /* New Group2 */,
-				FB01A0B928436ED90096FF99 /* New Group1 */,
+				FB01A0CF284628110096FF99 /* Utils */,
+				FB01A0C62844B7B50096FF99 /* Protocol */,
+				FB01A0BB28436EDC0096FF99 /* Model */,
+				FB01A0BA28436EDB0096FF99 /* Service */,
+				FB01A0B928436ED90096FF99 /* View */,
 				FB01A0B828436ED70096FF99 /* Controller */,
 				FB01A09828436BAF0096FF99 /* AppDelegate.swift */,
 				FB01A09A28436BAF0096FF99 /* SceneDelegate.swift */,
@@ -82,29 +116,67 @@
 			isa = PBXGroup;
 			children = (
 				FB01A0BC28436EED0096FF99 /* SearchViewController.swift */,
+				FB01A0C92844BEC70096FF99 /* CalculatorViewController.swift */,
+				FB764589284788330012B1EE /* DateSelectionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		FB01A0B928436ED90096FF99 /* New Group1 */ = {
+		FB01A0B928436ED90096FF99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0BE284371D80096FF99 /* SearchViewCell.swift */,
+				FB01A0C42844B03F0096FF99 /* SearchPlaceholderView.swift */,
+				FB01A0CB2844BF2E0096FF99 /* CalculatorViewCell.swift */,
+				FB01A0CD284611440096FF99 /* CalcaulatorViewSecondCell.swift */,
+				FB76458B284788B40012B1EE /* DateSelectionCell.swift */,
 			);
-			path = "New Group1";
+			path = View;
 			sourceTree = "<group>";
 		};
-		FB01A0BA28436EDB0096FF99 /* New Group2 */ = {
+		FB01A0BA28436EDB0096FF99 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0C028437DDC0096FF99 /* APIService.swift */,
 			);
-			path = "New Group2";
+			path = Service;
 			sourceTree = "<group>";
 		};
-		FB01A0BB28436EDC0096FF99 /* New Group3 */ = {
+		FB01A0BB28436EDC0096FF99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB01A0C228437F7C0096FF99 /* SearchResults.swift */,
+				FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */,
+				FB01A0D5284762B40096FF99 /* Asset.swift */,
 			);
-			path = "New Group3";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB01A0C62844B7B50096FF99 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FB01A0C72844B7C50096FF99 /* UIAnimatable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FB01A0CF284628110096FF99 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FB01A0D0284628180096FF99 /* Extension+ */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FB01A0D0284628180096FF99 /* Extension+ */ = {
+			isa = PBXGroup;
+			children = (
+				FB01A0D1284628200096FF99 /* UIViewController+.swift */,
+				FB01A0D728476AF60096FF99 /* String+.swift */,
+				FB764587284785640012B1EE /* UITextField+.swift */,
+				FB82D2102851CE4C00B74DCD /* Date+.swift */,
+			);
+			path = "Extension+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +262,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB01A0BF284371D80096FF99 /* SearchViewCell.swift in Sources */,
+				FB01A0C82844B7C50096FF99 /* UIAnimatable.swift in Sources */,
+				FB01A0D2284628200096FF99 /* UIViewController+.swift in Sources */,
+				FB01A0C128437DDC0096FF99 /* APIService.swift in Sources */,
+				FB76458C284788B40012B1EE /* DateSelectionCell.swift in Sources */,
+				FB76458A284788330012B1EE /* DateSelectionController.swift in Sources */,
+				FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
+				FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
+				FB01A0D828476AF60096FF99 /* String+.swift in Sources */,
 				FB01A0BD28436EED0096FF99 /* SearchViewController.swift in Sources */,
+				FB01A0D6284762B40096FF99 /* Asset.swift in Sources */,
+				FB82D2112851CE4C00B74DCD /* Date+.swift in Sources */,
+				FB01A0C328437F7C0096FF99 /* SearchResults.swift in Sources */,
+				FB01A0CC2844BF2E0096FF99 /* CalculatorViewCell.swift in Sources */,
 				FB01A09B28436BAF0096FF99 /* SceneDelegate.swift in Sources */,
+				FB01A0CA2844BEC70096FF99 /* CalculatorViewController.swift in Sources */,
+				FB01A0C52844B03F0096FF99 /* SearchPlaceholderView.swift in Sources */,
+				FB764588284785640012B1EE /* UITextField+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -324,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -348,7 +436,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +464,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
