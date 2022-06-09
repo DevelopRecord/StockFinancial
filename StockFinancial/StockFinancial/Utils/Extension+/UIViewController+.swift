@@ -14,5 +14,8 @@ extension UIViewController {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = largeTitles
         navigationItem.searchController = searchController
+
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = UIColor(named: "nav_item_color")
     }
 }

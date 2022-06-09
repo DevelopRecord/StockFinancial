@@ -12,6 +12,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Properties
 
     var asset: Asset
+    var selectedDateString: String?
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -37,7 +38,6 @@ class CalculatorViewController: UIViewController {
 
     init(asset: Asset) {
         self.asset = asset
-        print("에셋 정보: \(asset)")
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -57,6 +57,17 @@ class CalculatorViewController: UIViewController {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
+
+    private func handleDateSelection(at index: Int) {
+        guard navigationController?.visibleViewController is DateSelectionController else { return }
+        navigationController?.popViewController(animated: true)
+        let monthInfos = asset.timeSeriesMonthlyAdjusted.getMonthInfos()
+        let monthInfo = monthInfos[index]
+        print("monthInfo ||||| \(monthInfo) | \(index)")
+        let dateString = monthInfo.date.YYMMFormat
+        self.selectedDateString = dateString
+        self.tableView.reloadData()
+    }
 }
 
 extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
@@ -72,6 +83,7 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
             let secondCell = tableView.dequeueReusableCell(withIdentifier: CalcaulatorViewSecondCell.identifier, for: indexPath) as? CalcaulatorViewSecondCell ?? CalcaulatorViewSecondCell()
             secondCell.configure(currency: asset.searchResult.currency)
+            secondCell.initialDateOfInvestmentTextField.text = selectedDateString
             secondCell.delegate = self
             return secondCell
         } else {
@@ -93,7 +105,10 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
 extension CalculatorViewController: CalcaulatorViewSecondCellDelegate {
     func pushViewController() {
         let controller = DateSelectionController(asset: asset, timeSeriesMonthlyAdjusted: asset.timeSeriesMonthlyAdjusted)
-        print("111111. \(asset.timeSeriesMonthlyAdjusted)")
+        controller.didSelectDate = { [weak self] index in
+            print("인덱스 정보: \(index)")
+            self?.handleDateSelection(at: index)
+        }
         navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -87,7 +87,6 @@ class SearchViewController: UIViewController, UIAnimatable {
                 case .finished: break
                 }
             } receiveValue: { searchResults in
-                print("결과: \(searchResults), 개수: \(searchResults.items.count)")
                 self.searchResults = searchResults
                 self.tableView.reloadData()
             }.store(in: &self.subscribers) // subscriber 실행
@@ -142,8 +141,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
             let controller = CalculatorViewController(asset: asset)
             self?.navigationController?.pushViewController(controller, animated: true)
-
-            print("DEBUG: \(timeSeriesMonthlyAdjusted.getMonthInfos())")
         }.store(in: &subscribers)
     }
 }

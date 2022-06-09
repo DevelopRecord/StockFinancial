@@ -98,7 +98,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         $0.spacing = 4
     }
 
-    private let initialDateOfInvestmentTextField = UITextField().then {
+    let initialDateOfInvestmentTextField = UITextField().then {
         $0.placeholder = "최초 투자 일자를 입력해 주세요."
         $0.font = UIFont(name: "AvenirNext-Medium", size: 18)
         $0.borderStyle = .none
