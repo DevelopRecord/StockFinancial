@@ -13,6 +13,8 @@ class CalculatorViewController: UIViewController {
 
     var asset: Asset
     var selectedDateString: String?
+    
+    private var initialDateOfInvestmentIndex: Int?
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -61,9 +63,9 @@ class CalculatorViewController: UIViewController {
     private func handleDateSelection(at index: Int) {
         guard navigationController?.visibleViewController is DateSelectionController else { return }
         navigationController?.popViewController(animated: true)
+        initialDateOfInvestmentIndex = index
         let monthInfos = asset.timeSeriesMonthlyAdjusted.getMonthInfos()
         let monthInfo = monthInfos[index]
-        print("monthInfo ||||| \(monthInfo) | \(index)")
         let dateString = monthInfo.date.YYMMFormat
         self.selectedDateString = dateString
         self.tableView.reloadData()
@@ -105,6 +107,7 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
 extension CalculatorViewController: CalcaulatorViewSecondCellDelegate {
     func pushViewController() {
         let controller = DateSelectionController(asset: asset, timeSeriesMonthlyAdjusted: asset.timeSeriesMonthlyAdjusted)
+        controller.selectedIndex = self.initialDateOfInvestmentIndex
         controller.didSelectDate = { [weak self] index in
             print("인덱스 정보: \(index)")
             self?.handleDateSelection(at: index)

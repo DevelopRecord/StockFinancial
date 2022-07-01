@@ -13,6 +13,8 @@ class DateSelectionController: UIViewController {
 
     var asset: Asset
     var timeSeriesMonthlyAdjusted: TimeSeriesMonthlyAdjusted
+    var selectedIndex: Int?
+
     private var monthInfos: [MonthInfo] = []
     var didSelectDate: ((Int) -> Void)?
 
@@ -76,7 +78,8 @@ extension DateSelectionController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: DateSelectionCell.identifier, for: indexPath) as? DateSelectionCell ?? DateSelectionCell()
         let index = indexPath.item
         let monthInfo = monthInfos[index]
-        cell.configure(with: monthInfo, index: index)
+        let isSelected = index == selectedIndex
+        cell.configure(with: monthInfo, index: index, isSelected: isSelected)
         return cell
     }
 

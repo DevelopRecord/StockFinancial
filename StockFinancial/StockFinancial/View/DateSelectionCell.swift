@@ -57,9 +57,9 @@ class DateSelectionCell: UITableViewCell {
         }
     }
     
-    func configure(with monthInfo: MonthInfo, index: Int) {
+    func configure(with monthInfo: MonthInfo, index: Int, isSelected: Bool) {
         monthLabel.text = monthInfo.date.YYMMFormat
-        
+        accessoryType = isSelected ? .checkmark : .none
         if index == 1 {
             monthAgoLabel.text = "1개월 전"
         } else if index > 1 {
