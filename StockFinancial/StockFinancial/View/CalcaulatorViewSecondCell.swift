@@ -123,8 +123,9 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
 
-    private var investmentAmountSlider = UISlider().then {
+    private lazy var investmentAmountSlider = UISlider().then {
         $0.tintColor = .systemGreen
+        $0.addTarget(self, action: #selector(dateSliderDidChange), for: .valueChanged)
     }
 
     // MARK: - Lifecycle
@@ -167,6 +168,12 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         investmentAmountLTextField.addDoneButton()
         monthlyDollarCostLTextField.addDoneButton()
         initialDateOfInvestmentTextField.delegate = self
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func dateSliderDidChange(sender: UISlider) {
+        
     }
 }
 
