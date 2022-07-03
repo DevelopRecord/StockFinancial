@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 protocol CalcaulatorViewSecondCellDelegate: AnyObject {
     func pushViewController()
+    func deliveryInvestmentIndex(index: Int)
 }
 
 class CalcaulatorViewSecondCell: UITableViewCell {
@@ -17,6 +19,10 @@ class CalcaulatorViewSecondCell: UITableViewCell {
 
     static let identifier = "CalcaulatorViewSecondCell"
     
+    @Published var asset: Asset?
+    @Published var changedDateString: String?
+    private var subscriber = Set<AnyCancellable>()
+
     weak var delegate: CalcaulatorViewSecondCellDelegate?
 
     private lazy var stackView = UIStackView(arrangedSubviews: [verticalStackView, verticalStackView2, verticalStackView3]).then {
@@ -92,7 +98,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     // 세번째 스택뷰
-    private lazy var verticalStackView3 = UIStackView(arrangedSubviews: [initialDateOfInvestmentTextField, horizontalStackView3, investmentAmountSlider]).then {
+    private lazy var verticalStackView3 = UIStackView(arrangedSubviews: [initialDateOfInvestmentTextField, horizontalStackView3, dateSlider]).then {
         $0.backgroundColor = .clear
         $0.axis = .vertical
         $0.spacing = 4
@@ -123,7 +129,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
 
-    private lazy var investmentAmountSlider = UISlider().then {
+    private lazy var dateSlider = UISlider().then {
         $0.tintColor = .systemGreen
         $0.addTarget(self, action: #selector(dateSliderDidChange), for: .valueChanged)
     }
@@ -135,6 +141,7 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         configureUI()
         configureConstraints()
         setupTextFields()
+        observeForm()
     }
 
     required init?(coder: NSCoder) {
@@ -157,11 +164,13 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         }
     }
 
-    func configure(currency: String) {
+    func configure(currency: String, dateSliderValue: Float, maximumValue: Float) {
         let unitKindArr = [unitKindLabel, unitKindLabel2]
         unitKindArr.forEach { labels in
             labels.text = currency.addBrackets()
         }
+        dateSlider.value = dateSliderValue
+        dateSlider.maximumValue = maximumValue
     }
 
     private func setupTextFields() {
@@ -170,9 +179,25 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         initialDateOfInvestmentTextField.delegate = self
     }
     
-    // MARK: - Selectors
+    private func setupDateSlider() {
+        if let count = asset?.timeSeriesMonthlyAdjusted.getMonthInfos().count {
+            self.dateSlider.maximumValue = count.floatValue
+        }
+    }
     
+    private func observeForm() {
+        $changedDateString.sink { [weak self] dateStr in
+            print("이거는: \(dateStr)")
+        }
+    }
+
+    // MARK: - Selectors
+
     @objc func dateSliderDidChange(sender: UISlider) {
+        delegate?.deliveryInvestmentIndex(index: Int(sender.value))
+        initialDateOfInvestmentTextField.text = changedDateString
+        observeForm()
+        print("슬라이더 선택된 값: \(Int(sender.value))")
         
     }
 }
@@ -181,7 +206,8 @@ extension CalcaulatorViewSecondCell: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == initialDateOfInvestmentTextField {
             delegate?.pushViewController()
+            return false
         }
-        return false
+        return true
     }
 }

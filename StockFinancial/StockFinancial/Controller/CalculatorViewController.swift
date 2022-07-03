@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class CalculatorViewController: UIViewController {
 
@@ -13,6 +14,11 @@ class CalculatorViewController: UIViewController {
 
     var asset: Asset
     var selectedDateString: String?
+
+    @Published private var initialDateOfInvestmentIndex: Int?
+    private var subscribers = Set<AnyCancellable>()
+    var dateSliderValue: Float?
+    var selectedIndex: Int?
 
     private lazy var tableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -29,6 +35,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureConstraints()
+        observeForm()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,12 +68,25 @@ class CalculatorViewController: UIViewController {
     private func handleDateSelection(at index: Int) {
         guard navigationController?.visibleViewController is DateSelectionController else { return }
         navigationController?.popViewController(animated: true)
+        initialDateOfInvestmentIndex = index
         let monthInfos = asset.timeSeriesMonthlyAdjusted.getMonthInfos()
         let monthInfo = monthInfos[index]
-        print("monthInfo ||||| \(monthInfo) | \(index)")
         let dateString = monthInfo.date.YYMMFormat
         self.selectedDateString = dateString
         self.tableView.reloadData()
+    }
+
+    func observeForm() {
+        $initialDateOfInvestmentIndex.sink { [weak self] index in
+            guard let index = index else { return }
+            self?.selectedIndex = index
+            self?.dateSliderValue = index.floatValue
+            
+            if let dateString = self?.asset.timeSeriesMonthlyAdjusted.getMonthInfos()[index].date.YYMMFormat {
+                print("dateString: \(dateString)")
+                CalcaulatorViewSecondCell().initialDateOfInvestmentTextField.text = dateString
+            }
+        }.store(in: &subscribers)
     }
 }
 
@@ -82,7 +102,9 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.row == 1 {
             let secondCell = tableView.dequeueReusableCell(withIdentifier: CalcaulatorViewSecondCell.identifier, for: indexPath) as? CalcaulatorViewSecondCell ?? CalcaulatorViewSecondCell()
-            secondCell.configure(currency: asset.searchResult.currency)
+            let getMonthInfo = asset.timeSeriesMonthlyAdjusted.getMonthInfos()
+            let dateSliderCount = getMonthInfo.count - 1
+            secondCell.configure(currency: asset.searchResult.currency, dateSliderValue: dateSliderValue ?? 0, maximumValue: dateSliderCount.floatValue)
             secondCell.initialDateOfInvestmentTextField.text = selectedDateString
             secondCell.delegate = self
             return secondCell
@@ -105,10 +127,15 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
 extension CalculatorViewController: CalcaulatorViewSecondCellDelegate {
     func pushViewController() {
         let controller = DateSelectionController(asset: asset, timeSeriesMonthlyAdjusted: asset.timeSeriesMonthlyAdjusted)
+        controller.selectedIndex = initialDateOfInvestmentIndex
         controller.didSelectDate = { [weak self] index in
             print("인덱스 정보: \(index)")
             self?.handleDateSelection(at: index)
         }
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func deliveryInvestmentIndex(index: Int) {
+        initialDateOfInvestmentIndex = index
     }
 }
