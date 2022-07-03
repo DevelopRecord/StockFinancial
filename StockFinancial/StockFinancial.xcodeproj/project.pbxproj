@@ -29,6 +29,7 @@
 		FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */; };
 		FB01A0D6284762B40096FF99 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D5284762B40096FF99 /* Asset.swift */; };
 		FB01A0D828476AF60096FF99 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A0D728476AF60096FF99 /* String+.swift */; };
+		FB227168286EF1C4007DBC8C /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB227167286EF1C4007DBC8C /* Int+.swift */; };
 		FB764588284785640012B1EE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB764587284785640012B1EE /* UITextField+.swift */; };
 		FB76458A284788330012B1EE /* DateSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB764589284788330012B1EE /* DateSelectionController.swift */; };
 		FB76458C284788B40012B1EE /* DateSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76458B284788B40012B1EE /* DateSelectionCell.swift */; };
@@ -56,6 +57,7 @@
 		FB01A0D3284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
 		FB01A0D5284762B40096FF99 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		FB01A0D728476AF60096FF99 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		FB227167286EF1C4007DBC8C /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		FB764587284785640012B1EE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		FB764589284788330012B1EE /* DateSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionController.swift; sourceTree = "<group>"; };
 		FB76458B284788B40012B1EE /* DateSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionCell.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				FB01A0D728476AF60096FF99 /* String+.swift */,
 				FB764587284785640012B1EE /* UITextField+.swift */,
 				FB82D2102851CE4C00B74DCD /* Date+.swift */,
+				FB227167286EF1C4007DBC8C /* Int+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				FB76458C284788B40012B1EE /* DateSelectionCell.swift in Sources */,
 				FB76458A284788330012B1EE /* DateSelectionController.swift in Sources */,
 				FB01A0D4284740610096FF99 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
+				FB227168286EF1C4007DBC8C /* Int+.swift in Sources */,
 				FB01A0CE284611440096FF99 /* CalcaulatorViewSecondCell.swift in Sources */,
 				FB01A09928436BAF0096FF99 /* AppDelegate.swift in Sources */,
 				FB01A0D828476AF60096FF99 /* String+.swift in Sources */,
