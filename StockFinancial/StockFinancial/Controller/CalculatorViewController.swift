@@ -14,8 +14,6 @@ class CalculatorViewController: UIViewController {
 
     var asset: Asset
     var selectedDateString: String?
-    
-    private var initialDateOfInvestmentIndex: Int?
 
     @Published private var initialDateOfInvestmentIndex: Int?
     private var subscribers = Set<AnyCancellable>()
@@ -83,11 +81,7 @@ class CalculatorViewController: UIViewController {
             guard let index = index else { return }
             self?.selectedIndex = index
             self?.dateSliderValue = index.floatValue
-            
-            if let dateString = self?.asset.timeSeriesMonthlyAdjusted.getMonthInfos()[index].date.YYMMFormat {
-                print("dateString: \(dateString)")
-                CalcaulatorViewSecondCell().initialDateOfInvestmentTextField.text = dateString
-            }
+
         }.store(in: &subscribers)
     }
 }
@@ -108,6 +102,7 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
             let dateSliderCount = getMonthInfo.count - 1
             secondCell.configure(currency: asset.searchResult.currency, dateSliderValue: dateSliderValue ?? 0, maximumValue: dateSliderCount.floatValue)
             secondCell.initialDateOfInvestmentTextField.text = selectedDateString
+            secondCell.asset = asset
             secondCell.delegate = self
             return secondCell
         } else {
@@ -129,18 +124,18 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
 extension CalculatorViewController: CalcaulatorViewSecondCellDelegate {
     func pushViewController() {
         let controller = DateSelectionController(asset: asset, timeSeriesMonthlyAdjusted: asset.timeSeriesMonthlyAdjusted)
-<<<<<<< HEAD
+
         controller.selectedIndex = self.initialDateOfInvestmentIndex
-=======
+
         controller.selectedIndex = initialDateOfInvestmentIndex
->>>>>>> develop
+
         controller.didSelectDate = { [weak self] index in
             print("인덱스 정보: \(index)")
             self?.handleDateSelection(at: index)
         }
         navigationController?.pushViewController(controller, animated: true)
     }
-    
+
     func deliveryInvestmentIndex(index: Int) {
         initialDateOfInvestmentIndex = index
     }

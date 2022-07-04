@@ -18,12 +18,17 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "CalcaulatorViewSecondCell"
-    
-    @Published var asset: Asset?
-    @Published var changedDateString: String?
-    private var subscriber = Set<AnyCancellable>()
 
     weak var delegate: CalcaulatorViewSecondCellDelegate?
+    private var subscribers = Set<AnyCancellable>()
+
+    var asset: Asset? {
+        didSet { print("DEBUG: Asset 정보를 불러왔습니다.") }
+    }
+    
+    @Published private var initialDateOfInvestmentIndex: Int?
+    @Published private var initialInvestmentAmount: Int?
+    @Published private var monthlyDollarCostAveragingAmount: Int?
 
     private lazy var stackView = UIStackView(arrangedSubviews: [verticalStackView, verticalStackView2, verticalStackView3]).then {
         $0.backgroundColor = .clear
@@ -32,13 +37,13 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     // 첫번째 스택뷰
-    private lazy var verticalStackView = UIStackView(arrangedSubviews: [investmentAmountLTextField, horizontalStackView]).then {
+    private lazy var verticalStackView = UIStackView(arrangedSubviews: [initialInvestmentAmountTextField, horizontalStackView]).then {
         $0.backgroundColor = .clear
         $0.axis = .vertical
         $0.spacing = 4
     }
 
-    private let investmentAmountLTextField = UITextField().then {
+    private let initialInvestmentAmountTextField = UITextField().then {
         $0.placeholder = "투자량을 입력해 주세요."
         $0.font = UIFont(name: "AvenirNext-Medium", size: 18)
         $0.keyboardType = .numberPad
@@ -65,13 +70,13 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     // 두번째 스택뷰
-    private lazy var verticalStackView2 = UIStackView(arrangedSubviews: [monthlyDollarCostLTextField, horizontalStackView2]).then {
+    private lazy var verticalStackView2 = UIStackView(arrangedSubviews: [monthlyDollarCostAveragingAmountTextField, horizontalStackView2]).then {
         $0.backgroundColor = .clear
         $0.axis = .vertical
         $0.spacing = 4
     }
 
-    private let monthlyDollarCostLTextField = UITextField().then {
+    private let monthlyDollarCostAveragingAmountTextField = UITextField().then {
         $0.placeholder = "월 달러 평균 금액을 입력해 주세요."
         $0.font = UIFont(name: "AvenirNext-Medium", size: 18)
         $0.keyboardType = .numberPad
@@ -79,13 +84,13 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         $0.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
 
-    private lazy var horizontalStackView2 = UIStackView(arrangedSubviews: [monthlyDollarCostLabel, unitKindLabel2]).then {
+    private lazy var horizontalStackView2 = UIStackView(arrangedSubviews: [monthlyDollarCostAveragingAmountLabel, unitKindLabel2]).then {
         $0.backgroundColor = .clear
         $0.axis = .horizontal
         $0.spacing = 4
     }
 
-    private let monthlyDollarCostLabel = UILabel().then {
+    private let monthlyDollarCostAveragingAmountLabel = UILabel().then {
         $0.text = "월 달러 평균 금액"
         $0.font = UIFont(name: "AvenirNext-Regular", size: 12)
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -141,7 +146,6 @@ class CalcaulatorViewSecondCell: UITableViewCell {
         configureUI()
         configureConstraints()
         setupTextFields()
-        observeForm()
     }
 
     required init?(coder: NSCoder) {
@@ -174,31 +178,36 @@ class CalcaulatorViewSecondCell: UITableViewCell {
     }
 
     private func setupTextFields() {
-        investmentAmountLTextField.addDoneButton()
-        monthlyDollarCostLTextField.addDoneButton()
+        initialInvestmentAmountTextField.addDoneButton()
+        monthlyDollarCostAveragingAmountTextField.addDoneButton()
         initialDateOfInvestmentTextField.delegate = self
-    }
-    
-    private func setupDateSlider() {
-        if let count = asset?.timeSeriesMonthlyAdjusted.getMonthInfos().count {
-            self.dateSlider.maximumValue = count.floatValue
-        }
-    }
-    
-    private func observeForm() {
-        $changedDateString.sink { [weak self] dateStr in
-            print("이거는: \(dateStr)")
-        }
+        
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField).compactMap({
+            ($0.object as? UITextField)?.text
+        }).sink { [weak self] text in
+            self?.initialInvestmentAmount = Int(text) ?? 0
+        }.store(in: &subscribers)
+        
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: monthlyDollarCostAveragingAmountTextField).compactMap({
+            ($0.object as? UITextField)?.text
+        }).sink { [weak self] text in
+            self?.monthlyDollarCostAveragingAmount = Int(text) ?? 0
+        }.store(in: &subscribers)
+        
+        Publishers.CombineLatest3($initialInvestmentAmount, $monthlyDollarCostAveragingAmount, $initialDateOfInvestmentIndex).sink { initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex in
+            print(initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex)
+        }.store(in: &subscribers)
     }
 
     // MARK: - Selectors
 
     @objc func dateSliderDidChange(sender: UISlider) {
+        guard let asset = asset else { return }
+        initialDateOfInvestmentIndex = Int(sender.value)
+        let dateString = asset.timeSeriesMonthlyAdjusted.getMonthInfos()[initialDateOfInvestmentIndex ?? 0].date.YYMMFormat
+
+        initialDateOfInvestmentTextField.text = dateString
         delegate?.deliveryInvestmentIndex(index: Int(sender.value))
-        initialDateOfInvestmentTextField.text = changedDateString
-        observeForm()
-        print("슬라이더 선택된 값: \(Int(sender.value))")
-        
     }
 }
 
