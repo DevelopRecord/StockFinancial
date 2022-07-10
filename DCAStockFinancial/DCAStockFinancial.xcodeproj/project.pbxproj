@@ -23,6 +23,7 @@
 		FB9FEA302879A3DC00C69DF6 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA2F2879A3DC00C69DF6 /* SearchPlaceholderView.swift */; };
 		FB9FEA332879A57400C69DF6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB9FEA322879A57400C69DF6 /* SnapKit */; };
 		FB9FEA362879A6FF00C69DF6 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA352879A6FF00C69DF6 /* UIAnimatable.swift */; };
+		FB9FEA38287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FB9FEA2D2879A2DB00C69DF6 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		FB9FEA2F2879A3DC00C69DF6 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		FB9FEA352879A6FF00C69DF6 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
+		FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				FB9FEA292879958000C69DF6 /* SearchResults.swift */,
+				FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				FB36DCD12879892C00686A79 /* AppDelegate.swift in Sources */,
 				FB9FEA2A2879958000C69DF6 /* SearchResults.swift in Sources */,
 				FB36DCD32879892C00686A79 /* SceneDelegate.swift in Sources */,
+				FB9FEA38287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
