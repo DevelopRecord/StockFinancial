@@ -97,6 +97,10 @@ extension SearchTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showCalculator", sender: nil)
     }
+
+    private func handleSelection(for symbol: String) {
+        
+    }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
