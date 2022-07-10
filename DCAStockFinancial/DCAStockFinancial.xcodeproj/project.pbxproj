@@ -24,6 +24,9 @@
 		FB9FEA332879A57400C69DF6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB9FEA322879A57400C69DF6 /* SnapKit */; };
 		FB9FEA362879A6FF00C69DF6 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA352879A6FF00C69DF6 /* UIAnimatable.swift */; };
 		FB9FEA38287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */; };
+		FBE44523287AE2EF00C0A2F4 /* CalculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE44522287AE2EF00C0A2F4 /* CalculatorTableViewController.swift */; };
+		FBE44525287AE3D500C0A2F4 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE44524287AE3D500C0A2F4 /* Asset.swift */; };
+		FBE44527287AEA5900C0A2F4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE44526287AEA5900C0A2F4 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		FB9FEA2F2879A3DC00C69DF6 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		FB9FEA352879A6FF00C69DF6 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
 		FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
+		FBE44522287AE2EF00C0A2F4 /* CalculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewController.swift; sourceTree = "<group>"; };
+		FBE44524287AE3D500C0A2F4 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		FBE44526287AEA5900C0A2F4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +84,12 @@
 		FB36DCCF2879892C00686A79 /* DCAStockFinancial */ = {
 			isa = PBXGroup;
 			children = (
-				FB9FEA342879A6ED00C69DF6 /* Protocol */,
-				FB9FEA2B2879A2BD00C69DF6 /* Utils */,
 				FB9FEA23287993C900C69DF6 /* Model */,
 				FB9FEA22287993C900C69DF6 /* View */,
 				FB9FEA21287993C100C69DF6 /* Controller */,
 				FB9FEA262879950E00C69DF6 /* Service */,
+				FB9FEA2B2879A2BD00C69DF6 /* Utils */,
+				FB9FEA342879A6ED00C69DF6 /* Protocol */,
 				FB36DCD02879892C00686A79 /* AppDelegate.swift */,
 				FB36DCD22879892C00686A79 /* SceneDelegate.swift */,
 				FB36DCD62879892C00686A79 /* Main.storyboard */,
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FB36DCD42879892C00686A79 /* SearchTableViewController.swift */,
+				FBE44522287AE2EF00C0A2F4 /* CalculatorTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,6 +123,7 @@
 			children = (
 				FB9FEA292879958000C69DF6 /* SearchResults.swift */,
 				FB9FEA37287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift */,
+				FBE44524287AE3D500C0A2F4 /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FB9FEA2D2879A2DB00C69DF6 /* UIViewController+.swift */,
+				FBE44526287AEA5900C0A2F4 /* String+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -235,14 +244,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE44523287AE2EF00C0A2F4 /* CalculatorTableViewController.swift in Sources */,
 				FB9FEA362879A6FF00C69DF6 /* UIAnimatable.swift in Sources */,
 				FB9FEA2E2879A2DB00C69DF6 /* UIViewController+.swift in Sources */,
 				FB36DCD52879892C00686A79 /* SearchTableViewController.swift in Sources */,
 				FB9FEA302879A3DC00C69DF6 /* SearchPlaceholderView.swift in Sources */,
 				FB9FEA282879951300C69DF6 /* APIService.swift in Sources */,
+				FBE44525287AE3D500C0A2F4 /* Asset.swift in Sources */,
 				FB9FEA25287993F000C69DF6 /* SearchTableViewCell.swift in Sources */,
 				FB36DCD12879892C00686A79 /* AppDelegate.swift in Sources */,
 				FB9FEA2A2879958000C69DF6 /* SearchResults.swift in Sources */,
+				FBE44527287AEA5900C0A2F4 /* String+.swift in Sources */,
 				FB36DCD32879892C00686A79 /* SceneDelegate.swift in Sources */,
 				FB9FEA38287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 			);

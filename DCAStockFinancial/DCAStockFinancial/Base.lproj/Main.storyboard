@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="208.69565217391306" y="-21.428571428571427"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Calculator Table View Controller-->
         <scene sceneID="o9p-02-LUE">
             <objects>
-                <tableViewController id="6IO-aI-GY8" sceneMemberID="viewController">
+                <tableViewController id="6IO-aI-GY8" customClass="CalculatorTableViewController" customModule="DCAStockFinancial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="EI2-Tb-jtY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,12 +142,8 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="db8-mj-bN6">
-                                                                            <rect key="frame" x="35.5" y="0.0" width="310" height="16.5"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </view>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(USD)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qng-Tj-C31">
-                                                                            <rect key="frame" x="349.5" y="0.0" width="32.5" height="16.5"/>
+                                                                            <rect key="frame" x="35.5" y="0.0" width="346.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -389,6 +385,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pOL-3Z-CXW"/>
                     <connections>
+                        <outlet property="assetNameLabel" destination="feF-Gg-Gp9" id="17Q-dc-63P"/>
+                        <outlet property="symbolLabel" destination="gnF-FE-nzb" id="6d3-A2-NUz"/>
+                        <outletCollection property="currencyLabels" destination="Qng-Tj-C31" collectionClass="NSMutableArray" id="ANk-6e-yTM"/>
+                        <outletCollection property="currencyLabels" destination="qtS-LC-NIo" collectionClass="NSMutableArray" id="YYS-Bu-Qpw"/>
+                        <outletCollection property="currencyLabels" destination="k4V-u7-cHm" collectionClass="NSMutableArray" id="4d0-10-p0V"/>
+                        <outletCollection property="currencyLabels" destination="say-Pk-FLz" collectionClass="NSMutableArray" id="mU2-9G-5Lz"/>
+                        <outletCollection property="currencyLabels" destination="PgS-Xo-And" collectionClass="NSMutableArray" id="lCY-yE-dpb"/>
                         <segue destination="bkQ-TT-l4c" kind="show" id="c5N-Tx-7dc"/>
                     </connections>
                 </tableViewController>

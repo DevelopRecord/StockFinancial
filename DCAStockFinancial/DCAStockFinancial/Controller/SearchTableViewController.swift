@@ -95,11 +95,33 @@ extension SearchTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showCalculator", sender: nil)
+        if let symbol = self.searchResults {
+            let searchResult = symbol.items[indexPath.row]
+            let symbol = searchResult.symbol
+            handleSelection(for: symbol, searchResult: searchResult)
+        }
     }
 
-    private func handleSelection(for symbol: String) {
-        
+    private func handleSelection(for symbol: String, searchResult: SearchResult) {
+        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink { completionResult in
+            switch completionResult {
+            case .failure(_):
+                self.showToast(message: "해당 스톡 정보를 가져오지 못했습니다.")
+            case .finished: break
+            }
+        } receiveValue: { [weak self] timeSeriesMonthlyAdjusted in
+            let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
+            self?.performSegue(withIdentifier: "showCalculator", sender: asset)
+            print("DEBUG: 성공적으로 가져왔습니다. \(timeSeriesMonthlyAdjusted.getMonthInfos())")
+        }.store(in: &subscribers)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCalculator",
+            let destination = segue.destination as? CalculatorTableViewController,
+            let asset = sender as? Asset {
+            destination.asset = asset
+        }
     }
 }
 
