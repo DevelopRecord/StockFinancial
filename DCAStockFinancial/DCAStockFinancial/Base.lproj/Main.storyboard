@@ -96,7 +96,7 @@
         <scene sceneID="o9p-02-LUE">
             <objects>
                 <tableViewController id="6IO-aI-GY8" customClass="CalculatorTableViewController" customModule="DCAStockFinancial" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="EI2-Tb-jtY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="EI2-Tb-jtY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -269,7 +269,7 @@
                                                                         <constraint firstAttribute="height" constant="36" id="6Pw-Nc-R66"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="k5o-yS-Klj">
                                                                     <rect key="frame" x="0.0" y="32" width="382" height="14"/>
@@ -302,7 +302,7 @@
                                                                         <constraint firstAttribute="height" constant="36" id="Uol-4B-BZT"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T0R-FX-meO">
                                                                     <rect key="frame" x="0.0" y="32" width="382" height="14"/>
@@ -341,16 +341,10 @@
                                                                     <rect key="frame" x="0.0" y="32" width="382" height="14"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최초투자 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-q2-IDd">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="65.5" height="14"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="14"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="14" id="X0i-bA-Swu"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(USD)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgS-Xo-And">
-                                                                            <rect key="frame" x="69.5" y="0.0" width="312.5" height="14"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -386,35 +380,66 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pOL-3Z-CXW"/>
                     <connections>
                         <outlet property="assetNameLabel" destination="feF-Gg-Gp9" id="17Q-dc-63P"/>
+                        <outlet property="initialDateOfInvestmentTextFIeld" destination="gcE-Ou-JXd" id="oOS-BY-qoV"/>
+                        <outlet property="initialInvestmentAmountTextField" destination="jqt-jV-asO" id="FFG-xo-ahu"/>
+                        <outlet property="investmentAmountCurrencyLabel" destination="qtS-LC-NIo" id="fR4-qX-An9"/>
+                        <outlet property="monthlyDollarCostAveragingTextField" destination="Sue-cw-g1C" id="4Ck-Uv-VVG"/>
                         <outlet property="symbolLabel" destination="gnF-FE-nzb" id="6d3-A2-NUz"/>
                         <outletCollection property="currencyLabels" destination="Qng-Tj-C31" collectionClass="NSMutableArray" id="ANk-6e-yTM"/>
-                        <outletCollection property="currencyLabels" destination="qtS-LC-NIo" collectionClass="NSMutableArray" id="YYS-Bu-Qpw"/>
                         <outletCollection property="currencyLabels" destination="k4V-u7-cHm" collectionClass="NSMutableArray" id="4d0-10-p0V"/>
                         <outletCollection property="currencyLabels" destination="say-Pk-FLz" collectionClass="NSMutableArray" id="mU2-9G-5Lz"/>
-                        <outletCollection property="currencyLabels" destination="PgS-Xo-And" collectionClass="NSMutableArray" id="lCY-yE-dpb"/>
-                        <segue destination="bkQ-TT-l4c" kind="show" id="c5N-Tx-7dc"/>
+                        <segue destination="bkQ-TT-l4c" kind="show" identifier="showDateSelection" id="c5N-Tx-7dc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioi-Om-Yep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="-21.428571428571427"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Date Selection Table View Controller-->
         <scene sceneID="mCv-fi-I4c">
             <objects>
-                <tableViewController id="bkQ-TT-l4c" sceneMemberID="viewController">
+                <tableViewController id="bkQ-TT-l4c" customClass="DateSelectionTableViewController" customModule="DCAStockFinancial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Sz0-Ed-05F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nyh-4l-rnt">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cellId" rowHeight="64" id="nyh-4l-rnt" customClass="DateSelectionTableViewCell" customModule="DCAStockFinancial" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nyh-4l-rnt" id="2WI-pl-oZg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2u3-OP-iX2">
+                                            <rect key="frame" x="16" y="8" width="341.5" height="48"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf8-6p-61U">
+                                                    <rect key="frame" x="0.0" y="0.0" width="341.5" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rza-9Z-goU">
+                                                    <rect key="frame" x="0.0" y="29" width="341.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="2u3-OP-iX2" secondAttribute="bottom" constant="8" id="KLc-X2-K4j"/>
+                                        <constraint firstItem="2u3-OP-iX2" firstAttribute="leading" secondItem="2WI-pl-oZg" secondAttribute="leading" constant="16" id="KPG-7B-H7Q"/>
+                                        <constraint firstItem="2u3-OP-iX2" firstAttribute="top" secondItem="2WI-pl-oZg" secondAttribute="top" constant="8" id="aR8-fm-EGy"/>
+                                        <constraint firstAttribute="trailing" secondItem="2u3-OP-iX2" secondAttribute="trailing" constant="16" id="akU-N8-ztH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="monthAgoLabel" destination="Rza-9Z-goU" id="1Ev-dp-SiT"/>
+                                    <outlet property="monthLabel" destination="qf8-6p-61U" id="r2N-0o-1ba"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -426,7 +451,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auc-uj-3Q0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="-21"/>
+            <point key="canvasLocation" x="1802.8985507246377" y="-21.428571428571427"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YJh-cF-mWb">

@@ -100,16 +100,20 @@ extension SearchTableViewController {
             let symbol = searchResult.symbol
             handleSelection(for: symbol, searchResult: searchResult)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
-        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink { completionResult in
+        showLoadingAnimation()
+        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink { [weak self] completionResult in
+            self?.hideLoadingAnimation()
             switch completionResult {
             case .failure(_):
-                self.showToast(message: "해당 스톡 정보를 가져오지 못했습니다.")
+                self?.showToast(message: "해당 스톡 정보를 가져오지 못했습니다.")
             case .finished: break
             }
         } receiveValue: { [weak self] timeSeriesMonthlyAdjusted in
+            self?.hideLoadingAnimation()
             let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
             self?.performSegue(withIdentifier: "showCalculator", sender: asset)
             print("DEBUG: 성공적으로 가져왔습니다. \(timeSeriesMonthlyAdjusted.getMonthInfos())")

@@ -15,6 +15,9 @@
 		FB36DCDD2879892D00686A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB36DCDB2879892D00686A79 /* LaunchScreen.storyboard */; };
 		FB36DCE62879897D00686A79 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = FB36DCE52879897D00686A79 /* MBProgressHUD */; };
 		FB36DCE92879898900686A79 /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = FB36DCE82879898900686A79 /* Loaf */; };
+		FB92A6FB287C0D9D00DB0485 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */; };
+		FB92A6FD287C12CB00DB0485 /* DateSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FC287C12CB00DB0485 /* DateSelectionTableViewController.swift */; };
+		FB92A6FF287C258700DB0485 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FE287C258700DB0485 /* Date+.swift */; };
 		FB9FEA2028798D0900C69DF6 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FB9FEA1F28798D0900C69DF6 /* Then */; };
 		FB9FEA25287993F000C69DF6 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA24287993F000C69DF6 /* SearchTableViewCell.swift */; };
 		FB9FEA282879951300C69DF6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA272879951300C69DF6 /* APIService.swift */; };
@@ -38,6 +41,9 @@
 		FB36DCD92879892D00686A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB36DCDC2879892D00686A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB36DCDE2879892D00686A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		FB92A6FC287C12CB00DB0485 /* DateSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewController.swift; sourceTree = "<group>"; };
+		FB92A6FE287C258700DB0485 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		FB9FEA24287993F000C69DF6 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FB9FEA272879951300C69DF6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FB9FEA292879958000C69DF6 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 			children = (
 				FB36DCD42879892C00686A79 /* SearchTableViewController.swift */,
 				FBE44522287AE2EF00C0A2F4 /* CalculatorTableViewController.swift */,
+				FB92A6FC287C12CB00DB0485 /* DateSelectionTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 			children = (
 				FB9FEA2D2879A2DB00C69DF6 /* UIViewController+.swift */,
 				FBE44526287AEA5900C0A2F4 /* String+.swift */,
+				FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */,
+				FB92A6FE287C258700DB0485 /* Date+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -246,6 +255,7 @@
 			files = (
 				FBE44523287AE2EF00C0A2F4 /* CalculatorTableViewController.swift in Sources */,
 				FB9FEA362879A6FF00C69DF6 /* UIAnimatable.swift in Sources */,
+				FB92A6FD287C12CB00DB0485 /* DateSelectionTableViewController.swift in Sources */,
 				FB9FEA2E2879A2DB00C69DF6 /* UIViewController+.swift in Sources */,
 				FB36DCD52879892C00686A79 /* SearchTableViewController.swift in Sources */,
 				FB9FEA302879A3DC00C69DF6 /* SearchPlaceholderView.swift in Sources */,
@@ -253,10 +263,12 @@
 				FBE44525287AE3D500C0A2F4 /* Asset.swift in Sources */,
 				FB9FEA25287993F000C69DF6 /* SearchTableViewCell.swift in Sources */,
 				FB36DCD12879892C00686A79 /* AppDelegate.swift in Sources */,
+				FB92A6FB287C0D9D00DB0485 /* UITextField+.swift in Sources */,
 				FB9FEA2A2879958000C69DF6 /* SearchResults.swift in Sources */,
 				FBE44527287AEA5900C0A2F4 /* String+.swift in Sources */,
 				FB36DCD32879892C00686A79 /* SceneDelegate.swift in Sources */,
 				FB9FEA38287AB43600C69DF6 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
+				FB92A6FF287C258700DB0485 /* Date+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

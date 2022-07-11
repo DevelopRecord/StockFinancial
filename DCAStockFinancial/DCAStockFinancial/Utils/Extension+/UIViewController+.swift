@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
 
     /// 네비게이션 설정 함수
-    func setupNavigationBar(title: String, searchController: UISearchController) {
+    func setupNavigationBar(title: String, searchController: UISearchController? = nil) {
         navigationItem.searchController = searchController
         navigationItem.title = title
     }
