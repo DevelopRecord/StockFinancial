@@ -18,6 +18,7 @@
 		FB92A6FB287C0D9D00DB0485 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */; };
 		FB92A6FD287C12CB00DB0485 /* DateSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FC287C12CB00DB0485 /* DateSelectionTableViewController.swift */; };
 		FB92A6FF287C258700DB0485 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A6FE287C258700DB0485 /* Date+.swift */; };
+		FB92A70128815E9C00DB0485 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB92A70028815E9C00DB0485 /* Int+.swift */; };
 		FB9FEA2028798D0900C69DF6 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = FB9FEA1F28798D0900C69DF6 /* Then */; };
 		FB9FEA25287993F000C69DF6 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA24287993F000C69DF6 /* SearchTableViewCell.swift */; };
 		FB9FEA282879951300C69DF6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FEA272879951300C69DF6 /* APIService.swift */; };
@@ -44,6 +45,7 @@
 		FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		FB92A6FC287C12CB00DB0485 /* DateSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewController.swift; sourceTree = "<group>"; };
 		FB92A6FE287C258700DB0485 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		FB92A70028815E9C00DB0485 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		FB9FEA24287993F000C69DF6 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FB9FEA272879951300C69DF6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FB9FEA292879958000C69DF6 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				FBE44526287AEA5900C0A2F4 /* String+.swift */,
 				FB92A6FA287C0D9D00DB0485 /* UITextField+.swift */,
 				FB92A6FE287C258700DB0485 /* Date+.swift */,
+				FB92A70028815E9C00DB0485 /* Int+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB92A70128815E9C00DB0485 /* Int+.swift in Sources */,
 				FBE44523287AE2EF00C0A2F4 /* CalculatorTableViewController.swift in Sources */,
 				FB9FEA362879A6FF00C69DF6 /* UIAnimatable.swift in Sources */,
 				FB92A6FD287C12CB00DB0485 /* DateSelectionTableViewController.swift in Sources */,
